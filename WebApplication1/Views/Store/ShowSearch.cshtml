@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "ShowSearch";
+}
+
+<h2>Search Products</h2>
+@{Html.BeginForm("Search","Store",FormMethod.Get); }
+
+<input type="text" name="q" />
+<input type="submit" value="Search!" />
+
+
+@{Html.EndForm(); }
+

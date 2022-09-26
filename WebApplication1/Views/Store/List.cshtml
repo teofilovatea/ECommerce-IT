@@ -1,0 +1,17 @@
+﻿@using WebApplication1.Models
+@model WebApplication1.ViewModels.BrandProductViewModel
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of products by @Model.Brand.Name</h2>
+
+<ul>
+    @foreach(Product p in Model.Products)
+            {
+                <li>
+                    @p.Name
+                </li>
+            }
+</ul>
+

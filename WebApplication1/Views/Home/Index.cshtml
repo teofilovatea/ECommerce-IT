@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>SKINCARE CONCEPT STORE</h1>
+    <p class="lead">Welcome to the best online skincare store! </p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="row">
+    <h1>The Brands We Work With </h1>
+
+    <div class="col-md-4">
+        <p>
+            <img class="active" src="~/Images/la roche posay.png" />
+        </p>
+    </div>
+    <div class="col-md-4">
+        <p>
+            <img class="active" src="~/Images/drunk elephant.jpg" sizes="200px" />
+        </p>
+    </div>
+    <div class="col-md-4">
+        <p>
+            <img class="active" src="~/Images/the ordinray.png" sizes="200px" />
+        </p>
+
+    </div>
+
+    <div class="col-md-4">
+        <p>
+            <img class="active" src="~/Images/Neutrogena.png" sizes="200px" />
+        </p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#album").DataTable();
+        });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

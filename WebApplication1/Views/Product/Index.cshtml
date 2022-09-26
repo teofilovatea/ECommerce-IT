@@ -1,0 +1,118 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!--
+<h3>Search in products</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using(Ajax.BeginForm("ProductSearch","Product",
+            new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                OnFailure = "searchfailed",
+                LoadingElementId = "ajax-loader",
+                UpdateTargetId = "searchresults"
+            }
+              ))
+            {
+                <input type="text" name="q" />
+
+                <button class="btn-default" type="submit" value="search"></button>
+              < img id="ajax-loader"
+                     src="@Url.Content("~/Images/loader.gif")"
+                     style="display:none"
+                     />
+            }
+
+
+        <div id="searchresults"></div>
+    </div>
+</div>-->
+
+<table id="album" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Product Name")
+            </th>
+            <th>
+                @Html.DisplayName("Brand")
+            </th>
+            <th>
+                @Html.DisplayName("Category")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img src="@item.ProductPicture" style="max-width:100px" />
+            </td>
+            <td>
+                @if (User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) 
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="dailydeal">
+    @Ajax.ActionLink("Product deal of the day",
+   "DailyDeal",
+   null,
+   new AjaxOptions
+   {
+       UpdateTargetId = "dailydeal",
+       InsertionMode = InsertionMode.Replace,
+       HttpMethod = "GET"
+   },
+   new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#album").DataTable();
+        });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+

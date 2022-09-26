@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+    @using WebApplication1.Models
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search results</h2>
+
+<ul>
+    @foreach (Product p in Model)
+    {
+        <li>
+            @p.Name
+        </li>
+    }
+</ul>
+

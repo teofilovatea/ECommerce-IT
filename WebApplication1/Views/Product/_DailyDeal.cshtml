@@ -1,0 +1,21 @@
+﻿@model WebApplication1.Models.Product
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Your daily deal: @Model.Name</h3>
+    </div>
+    <div class="panel-body">
+        <p>
+            <img alt="@Model.Name" src="@Url.Content(Model.ProductPicture)" width="200px" />
+        </p>
+        <div id="product-details">
+            <p>
+                <em>Brand:</em>
+                @Model.Brand.Name
+            </p>
+            <p>
+                <em>Price:</em>
+                @String.Format("{0:F}", Model.Price)
+            </p>
+        </div>
+    </div>
+</div>

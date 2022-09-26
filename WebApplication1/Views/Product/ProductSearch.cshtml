@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+<div id="searchresults">
+    <ul>
+        @foreach(var item in Model)
+            {
+                <li>
+                    @item.Name
+                </li>
+            }
+    </ul>
+</div>
+
